@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TwentyTwoSeven.Common\TwentyTwoSeven.Common.csproj" />
+    <ProjectReference Include="..\TwentyTwoSeven.Di\TwentyTwoSeven.Di.csproj" />
+  </ItemGroup>
+
 
 </Project>

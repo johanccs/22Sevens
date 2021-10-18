@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Api", "TwentyTwoSeven.Api\TwentyTwoSeven.Api.csproj", "{0F21E7F1-5EEE-40DC-B3C1-314315831D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Api", "TwentyTwoSeven.Api\TwentyTwoSeven.Api.csproj", "{0F21E7F1-5EEE-40DC-B3C1-314315831D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Data", "TwentyTwoSeven.Data\TwentyTwoSeven.Data.csproj", "{9A22FCA8-3422-42FE-B728-2FF70193D607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Data", "TwentyTwoSeven.Data\TwentyTwoSeven.Data.csproj", "{9A22FCA8-3422-42FE-B728-2FF70193D607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Di", "TwentyTwoSeven.Di\TwentyTwoSeven.Di.csproj", "{D3E77F88-CD5D-4981-86FE-50C6BA127221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Di", "TwentyTwoSeven.Di\TwentyTwoSeven.Di.csproj", "{D3E77F88-CD5D-4981-86FE-50C6BA127221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Contracts", "TwentyTwoSeven.Contracts\TwentyTwoSeven.Contracts.csproj", "{5116DB32-A66E-4923-B0FC-16FDA2C55DD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Contracts", "TwentyTwoSeven.Contracts\TwentyTwoSeven.Contracts.csproj", "{5116DB32-A66E-4923-B0FC-16FDA2C55DD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Common", "TwentyTwoSeven.Common\TwentyTwoSeven.Common.csproj", "{649C0BAF-057F-4FA2-8897-AA4582A7E21D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Common", "TwentyTwoSeven.Common\TwentyTwoSeven.Common.csproj", "{649C0BAF-057F-4FA2-8897-AA4582A7E21D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Services", "TwentyTwoSeven.Services\TwentyTwoSeven.Services.csproj", "{58933E89-EE26-471B-A09A-E0A00057FFA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Services", "TwentyTwoSeven.Services\TwentyTwoSeven.Services.csproj", "{58933E89-EE26-471B-A09A-E0A00057FFA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Tests", "TwentyTwoSeven.Tests\TwentyTwoSeven.Tests.csproj", "{F91BBD1D-DCFE-4801-A67B-A8CE24A90D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyTwoSeven.Tests", "TwentyTwoSeven.Tests\TwentyTwoSeven.Tests.csproj", "{F91BBD1D-DCFE-4801-A67B-A8CE24A90D5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyTwoSeven.Infrastructure", "TwentyTwoSeven.Infrastructure\TwentyTwoSeven.Infrastructure.csproj", "{8AFECAD4-0D52-412D-99E1-EA6F14B4FDA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F91BBD1D-DCFE-4801-A67B-A8CE24A90D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F91BBD1D-DCFE-4801-A67B-A8CE24A90D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F91BBD1D-DCFE-4801-A67B-A8CE24A90D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AFECAD4-0D52-412D-99E1-EA6F14B4FDA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AFECAD4-0D52-412D-99E1-EA6F14B4FDA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AFECAD4-0D52-412D-99E1-EA6F14B4FDA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AFECAD4-0D52-412D-99E1-EA6F14B4FDA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
