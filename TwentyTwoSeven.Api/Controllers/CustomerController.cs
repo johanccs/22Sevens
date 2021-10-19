@@ -25,33 +25,33 @@ namespace TwentyTwoSeven.Api.Controllers
         #region Public Methods
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<ActionResult<string>> GetById(int id)
         {
-            return null;
+            return await Task.FromResult("empty");
         }
 
         [HttpGet]
-        public async Task<IActionResult>GetAll()
+        public async Task<ActionResult<string>>GetAll()
         {
-            return null;
+            return await Task.FromResult("empty");
         }
 
         [HttpPost]
-        public async Task<IActionResult>Post(CustomerRequest.V1.Add request)
+        public async Task<ActionResult<bool>>Post(CustomerRequest.V1.Add request)
         {
-            return null;
+            return await Task.FromResult(true);
         }
 
         [HttpPut]
-        public async Task<IActionResult>Update(CustomerRequest.V1.Update request)
+        public async Task<ActionResult<bool>>Update(CustomerRequest.V1.Update request)
         {
-            return null;
+            return await Task.FromResult(true);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult>Delete(int id)
+        public async Task<ActionResult<bool>>Delete(CustomerRequest.V1.Delete request)
         {
-            return null;
+            return await Task.FromResult(true);
         }
 
         #endregion
