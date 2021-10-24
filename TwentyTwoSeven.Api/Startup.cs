@@ -21,7 +21,8 @@ namespace TwentyTwoSeven.Api
         {
             services.AddControllers();
             services.RegisterService();
-            services.RegisterDbContext();            
+            services.RegisterDbContext();
+            services.RegisterConfigWrapper();
             services.AddSwaggerGen(option =>
             {
                 option.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo

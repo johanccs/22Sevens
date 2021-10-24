@@ -1,6 +1,6 @@
 ﻿namespace TwentyTwoSeven.Data.Entities
 {
-    public class StatusEntity
+    public class StatusDto
     {
         public int Id { get; set; }
         public int StatusId { get; set; }
