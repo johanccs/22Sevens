@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TwentyTwoSeven.Contracts;
 using TwentyTwoSeven.Data.DataContext;
+using TwentyTwoSeven.Infrastructure.Logger;
 using TwentyTwoSeven.Services;
 
 namespace TwentyTwoSeven.Di
@@ -10,7 +11,7 @@ namespace TwentyTwoSeven.Di
     {
         public static void RegisterService(this IServiceCollection services)
         {
-
+            services.AddSingleton<ILoggerManager, LoggerManager>();
         }
 
         public static void RegisterDbContext(this IServiceCollection services)
