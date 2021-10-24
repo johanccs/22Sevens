@@ -16,14 +16,16 @@ namespace TwentyTwoSeven.Api.Controllers
         #region Readonly Fields
 
         private readonly IRepoWrapper _repoWrapper;
+        private readonly ILoggerManager _logger;
 
         #endregion
 
         #region Constructor
 
-        public CustomerController(IRepoWrapper repoWrapper)
+        public CustomerController(IRepoWrapper repoWrapper, ILoggerManager logger)
         {
             _repoWrapper = repoWrapper;
+            _logger = logger;
         }
 
         #endregion
@@ -42,10 +44,12 @@ namespace TwentyTwoSeven.Api.Controllers
                     return NotFound($"Customer with Id {request.Id} not found");
                 }
 
+                _logger.LogInfo($"{result.CustId} found");
                 return Ok(result);
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -62,10 +66,12 @@ namespace TwentyTwoSeven.Api.Controllers
                     return NotFound("No customers found");
                 }
 
+                _logger.LogInfo($"{result.Count} record/s found");
                 return Ok(result);
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message);
                 return BadRequest(ex.Message);
             }
         }
