@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
+using TwentyTwoSeven.Data.Dto;
+using TwentyTwoSeven.Domain.ValueObjects;
 
 namespace TwentyTwoSeven.Contracts
 {
-    public interface IAccountService<TEntity>
+    public interface IAccountService:IRepositoryBase<AccountDto>
     {
-        TEntity Add(TEntity entity);
-
-        TEntity Update();
-
-
+        Task Transfer(TransferObject to);
     }
 }

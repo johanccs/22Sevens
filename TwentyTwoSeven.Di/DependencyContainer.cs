@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TwentyTwoSeven.Contracts;
 using TwentyTwoSeven.Data.DataContext;
+using TwentyTwoSeven.Services;
 
 namespace TwentyTwoSeven.Di
 {
@@ -13,10 +15,16 @@ namespace TwentyTwoSeven.Di
 
         public static void RegisterDbContext(this IServiceCollection services)
         {
-            services.AddDbContext<Context>(
+            services.AddDbContext<RepoContext>(
                 option => option.UseInMemoryDatabase(databaseName: "MemDb"),
-                ServiceLifetime.Transient, 
+                ServiceLifetime.Transient,
                 ServiceLifetime.Transient);
         }
+
+      public static void RegisterConfigWrapper(this IServiceCollection services)
+        {
+            services.AddTransient<IRepoWrapper, RepoWrapper>();
+        }
+
     }
 }

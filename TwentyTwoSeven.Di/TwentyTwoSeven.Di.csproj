@@ -11,7 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TwentyTwoSeven.Contracts\TwentyTwoSeven.Contracts.csproj" />
     <ProjectReference Include="..\TwentyTwoSeven.Data\TwentyTwoSeven.Data.csproj" />
+    <ProjectReference Include="..\TwentyTwoSeven.Domain\TwentyTwoSeven.Domain.csproj" />
+    <ProjectReference Include="..\TwentyTwoSeven.Services\TwentyTwoSeven.Services.csproj" />
   </ItemGroup>
 
 </Project>
