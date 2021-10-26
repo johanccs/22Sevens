@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -51,7 +52,12 @@ namespace TwentyTwoSeven.Services
         {
             return await Task.FromResult(RepoContext.Set<T>().Where(expression).AsNoTracking());
         }
-     
+
+        public async Task<IList<T>> FindAllbyList()
+        {
+            return await Task.FromResult(RepoContext.Set<T>().ToList());
+        }
+
         #endregion
     }
 }

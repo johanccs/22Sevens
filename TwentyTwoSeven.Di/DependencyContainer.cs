@@ -26,6 +26,5 @@ namespace TwentyTwoSeven.Di
         {
             services.AddTransient<IRepoWrapper, RepoWrapper>();
         }
-
     }
 }

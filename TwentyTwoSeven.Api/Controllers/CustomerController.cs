@@ -77,13 +77,13 @@ namespace TwentyTwoSeven.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<bool>>Post(CustomerRequest.V1.Add request, string accNr, int accType)
+        public async Task<ActionResult<CustomerDto>>Post(CustomerRequest.V1.Add request)
         {
             try
             {
-                await CreateCustomerAsync(request, accNr, accType);
+                var result = await CreateCustomerAsync(request);
 
-                return Ok("Success");
+                return Ok($"Id: {result}");
             }
             catch (Exception ex)
             {
@@ -123,22 +123,6 @@ namespace TwentyTwoSeven.Api.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("Transfer/{srcAccNr}/{destAccNr}/{transferAmt}")]
-        public async Task<ActionResult<string>>Transfer(AccountRequest.V1.Transfer transfer, decimal transferAmount)
-        {
-            try
-            {
-                await InternalTransfer(transfer, transferAmount);
-
-                return Ok("Success");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);                
-            }
-        }
-
         #endregion
 
         #region Private Methods
@@ -163,22 +147,26 @@ namespace TwentyTwoSeven.Api.Controllers
                 return (CustomerDto)result;
         }
 
-        private async Task CreateCustomerAsync(CustomerRequest.V1.Add custRequest, 
-                                               string accNr, int accType)
+        private async Task<int> CreateCustomerAsync(CustomerRequest.V1.Add custRequest)
         {
-            var accRequest = new AccountRequest.V1.Add
-            {
-                AccNumber = accNr,
-                AccType = accType,
-                Balance = 130,
-                CustomerId = custRequest.CustId,
-                StatusId = 1
-            };
-
-            await _repoWrapper.Account.CreateAsync(AccountRequest.V1.Add.Map(accRequest));
             await _repoWrapper.Customer.CreateAsync(CustomerRequest.V1.Add.Map(custRequest));
 
             await _repoWrapper.SaveAsync();
+
+            return await GetCreatedCustomerId(custRequest);
+        }
+
+        private async Task<int>GetCreatedCustomerId(CustomerRequest.V1.Add request)
+        {
+            var returnQuery = await _repoWrapper.Customer
+                               .FindByConditionAsync(x => x.CustId.Equals(request.CustId));
+
+            var cust = returnQuery.Select(x => x.Id).ToList();
+
+            if (cust == null || cust.Count == 0)
+                throw new ArgumentException("Create customer procedure failed", nameof(cust));
+
+            return cust[0];
         }
 
         private async Task UpdateCustomerAsync(CustomerRequest.V1.Update request)
@@ -193,21 +181,6 @@ namespace TwentyTwoSeven.Api.Controllers
             var customerToBeDeleted = await GetCustomerById(request.Id);
 
             var result = customerToBeDeleted.Accounts.Select(x => x.Balance > 0) as CustomerDto;
-        }
-
-        private async Task InternalTransfer(AccountRequest.V1.Transfer transfer, decimal transferAmount)
-        {
-            await GetAccountByCustByAccNr(transfer);
-        }
-
-        private async Task GetAccountByCustByAccNr(AccountRequest.V1.Transfer transfer)
-        {
-            var srcAcc = await _repoWrapper
-                 .Customer
-                 .FindByConditionAsync(
-                         x => x.Accounts.Select(
-                         x => x.AccNumber == transfer.SourceAccNumber).FirstOrDefault());
-            var res = srcAcc.ToList();
         }
 
         #endregion

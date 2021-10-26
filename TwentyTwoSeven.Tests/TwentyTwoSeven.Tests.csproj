@@ -13,4 +13,10 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TwentyTwoSeven.Contracts\TwentyTwoSeven.Contracts.csproj" />
+    <ProjectReference Include="..\TwentyTwoSeven.Data\TwentyTwoSeven.Data.csproj" />
+    <ProjectReference Include="..\TwentyTwoSeven.Services\TwentyTwoSeven.Services.csproj" />
+  </ItemGroup>
+
 </Project>

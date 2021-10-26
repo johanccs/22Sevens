@@ -11,8 +11,9 @@ namespace TwentyTwoSeven.Common.RequestModels
             public class Add
             {
                 public string Name { get; set; }
-                public int Status { get; set; }
-                public int CustId { get; set; }
+
+                public string CustId { get; set; }
+
                 public IList<int> Accounts { get; set; }
 
                 public static CustomerDto Map(CustomerRequest.V1.Add entity)
@@ -23,7 +24,7 @@ namespace TwentyTwoSeven.Common.RequestModels
                     var returnVal = new CustomerDto
                     {
                         Name = entity.Name,
-                        StatusId = entity.Status                      
+                        CustId = entity.CustId
                     };
 
                     return returnVal;
@@ -46,8 +47,7 @@ namespace TwentyTwoSeven.Common.RequestModels
                     var returnVal = new CustomerDto
                     {
                         Id = entity.Id,
-                        Name = entity.Name,
-                        StatusId = entity.Status
+                        Name = entity.Name
                     };
 
                     return returnVal;
