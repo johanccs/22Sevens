@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TwentyTwoSeven.Common\TwentyTwoSeven.Common.csproj" />
     <ProjectReference Include="..\TwentyTwoSeven.Data\TwentyTwoSeven.Data.csproj" />
-    <ProjectReference Include="..\TwentyTwoSeven.Domain\TwentyTwoSeven.Domain.csproj" />
   </ItemGroup>
 
 </Project>

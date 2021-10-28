@@ -13,9 +13,9 @@ namespace TwentyTwoSeven.Common.RequestModels
                 public int AccType { get; set; }
                 public int StatusId { get; set; }
                 public decimal Balance { get; set; }
-                public int CustomerId { get; set; }
+                public string CustomerId { get; set; }
 
-                public static AccountDto Map(AccountRequest.V1.Add entity)
+                public static AccountDto Map(AccountRequest.V1.Add entity, decimal openingBalance = 100)
                 {
                     if (entity == null)
                         throw new ArgumentNullException("Entity cannot be null");
@@ -23,9 +23,9 @@ namespace TwentyTwoSeven.Common.RequestModels
                     var returnVal = new AccountDto
                     {
                         AccNumber = entity.AccNumber,
-                        AccType = entity.AccType,
-                        CustomerId = entity.CustomerId,
-                        StatusId = entity.StatusId
+                        AccType = entity.AccType,                        
+                        StatusId = entity.StatusId,
+                        Balance = openingBalance
                     };
 
                     return returnVal;
@@ -39,7 +39,7 @@ namespace TwentyTwoSeven.Common.RequestModels
                 public int AccType { get; set; }
                 public int Status { get; set; }
                 public decimal Balance { get; set; }
-                public int CustomerId { get; set; }
+                public string CustomerId { get; set; }
 
                 public static AccountDto Map(AccountRequest.V1.Update entity)
                 {
@@ -50,8 +50,7 @@ namespace TwentyTwoSeven.Common.RequestModels
                     {
                         Id = entity.Id,
                         AccNumber = entity.AccNumber,
-                        AccType = entity.AccType,
-                        CustomerId = entity.CustomerId,
+                        AccType = entity.AccType,                       
                         StatusId = entity.Status
                     };
 
@@ -59,9 +58,9 @@ namespace TwentyTwoSeven.Common.RequestModels
                 }
             }
 
-            public class Delete
+            public class CloseAccount
             {
-                public int Id { get; set; }
+                public string AccountNr { get; set; }
             }
 
             public class GetById
@@ -74,6 +73,8 @@ namespace TwentyTwoSeven.Common.RequestModels
                 public string SourceAccNumber { get; set; }
 
                 public string DestinationAccNumber { get; set; }
+
+                public decimal TransferAmount { get; set; }
             }
         }
     }

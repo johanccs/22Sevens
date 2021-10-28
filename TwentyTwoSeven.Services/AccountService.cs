@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using TwentyTwoSeven.Common.Models;
 using TwentyTwoSeven.Contracts;
 using TwentyTwoSeven.Data.DataContext;
 using TwentyTwoSeven.Data.Dto;
-using TwentyTwoSeven.Domain.Entities;
-using TwentyTwoSeven.Domain.ValueObjects;
 
 namespace TwentyTwoSeven.Services
 {
@@ -12,7 +12,19 @@ namespace TwentyTwoSeven.Services
     {
         public AccountService(RepoContext context) : base(context)
         {
+           
+        }
 
+        public async Task<decimal> GetBalance(string accNr)
+        {
+            var result = await this.FindAllbyList();
+
+            if (result.Count == 0)
+                throw new ArgumentException("No accounts registered");
+
+            var balance = result.FirstOrDefault(x=>x.AccNumber.Equals(accNr)).Balance;
+
+            return balance;
         }
 
         public async Task Transfer(TransferObject to)
@@ -32,28 +44,9 @@ namespace TwentyTwoSeven.Services
             }
             finally
             {
-                await UpdateAsync(Map(result.SourceAccount));
-                await UpdateAsync(Map(result.DestinationAccount));
+                await UpdateAsync(result.SourceAccount);
+                await UpdateAsync(result.DestinationAccount);
             }
         }
-
-        #region Private methods
-
-        private static AccountDto Map(AccountEntity entity)
-        {
-            var accDto = new AccountDto
-            {
-                AccNumber = entity.GetAccNumber(),
-                AccType = entity.GetAccountType(),
-                Balance = entity.GetBalance(),
-                CustomerId = entity.GetCustomerId(),
-                Id = entity.GetId().Id,
-                StatusId = entity.GetStatusId()
-            };
-
-            return accDto;
-        } 
-
-        #endregion
     }
 }
