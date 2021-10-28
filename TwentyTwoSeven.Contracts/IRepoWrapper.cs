@@ -6,7 +6,7 @@ namespace TwentyTwoSeven.Contracts
     {
         IAccountService Account { get; }
         ICustomerService Customer { get; }
-
+        ITransferService Transfer { get; }
         Task SaveAsync();
     }
 }

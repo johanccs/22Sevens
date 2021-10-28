@@ -9,6 +9,7 @@ namespace TwentyTwoSeven.Services
         private RepoContext _repoCtx;
         private IAccountService _account;
         private ICustomerService _customer;
+        private ITransferService _transfer;
 
         #region Properties
 
@@ -35,6 +36,19 @@ namespace TwentyTwoSeven.Services
                 }
 
                 return _customer;
+            }
+        }
+
+        public ITransferService Transfer
+        {
+            get
+            {
+                if (_transfer == null)
+                {
+                    _transfer = new TransferService(_repoCtx);
+                }
+
+                return _transfer;
             }
         }
 

@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TwentyTwoSeven.Data.Dto
 {
     [Table("Account")]
     public class AccountDto
     {
-
+        [Key]
         public int Id { get; set; }
 
         public string AccNumber { get; set; }
@@ -16,6 +17,8 @@ namespace TwentyTwoSeven.Data.Dto
 
         public decimal Balance { get; set; }
 
-        public int CustomerId { get; set; }
+        public int CustId { get; set; }
+
+        public virtual CustomerDto Customer { get; set; }
     }
 }
