@@ -17,7 +17,7 @@ namespace TwentyTwoSeven.Data.Dto
 
         public decimal Balance { get; set; }
 
-        public string CustomerId { get; set; }
+        public int CustId { get; set; }
 
         public virtual CustomerDto Customer { get; set; }
     }

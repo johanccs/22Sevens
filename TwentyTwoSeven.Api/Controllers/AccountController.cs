@@ -241,10 +241,10 @@ namespace TwentyTwoSeven.Api.Controllers
 
         private async Task CreateEntity(AccountRequest.V1.Add request)
         {
-            var customerTask = await _repoWrapper.Customer.FindByConditionAsync(x => x.CustId.Equals(request.CustomerId));
+            var customerTask = await _repoWrapper.Customer.FindByConditionAsync(x => x.CustomerNr.Equals(request.CustomerId));
             var customerList = customerTask?.ToList();
             
-            if(customerList.Count == 0)
+            if(customerList.Count() == 0)
             {
                throw new ArgumentException("Please add customer first", nameof(request.CustomerId));
             }

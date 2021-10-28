@@ -23,8 +23,7 @@ namespace TwentyTwoSeven.Common.RequestModels
                     var returnVal = new AccountDto
                     {
                         AccNumber = entity.AccNumber,
-                        AccType = entity.AccType,
-                        CustomerId = entity.CustomerId,
+                        AccType = entity.AccType,                        
                         StatusId = entity.StatusId,
                         Balance = openingBalance
                     };
@@ -51,8 +50,7 @@ namespace TwentyTwoSeven.Common.RequestModels
                     {
                         Id = entity.Id,
                         AccNumber = entity.AccNumber,
-                        AccType = entity.AccType,
-                        CustomerId = entity.CustomerId,
+                        AccType = entity.AccType,                       
                         StatusId = entity.Status
                     };
 

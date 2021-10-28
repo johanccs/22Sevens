@@ -24,7 +24,7 @@ namespace TwentyTwoSeven.Data.DataContext
 
         public async Task<CustomerDto> GetCustomerById(string id)
         {
-            var cust = _customers.FirstOrDefault(x => x.CustId == id);
+            var cust = _customers.FirstOrDefault(x => x.CustomerNr == id);
 
             return await Task.FromResult(cust);
         }
@@ -61,7 +61,7 @@ namespace TwentyTwoSeven.Data.DataContext
 
             _customers.Add(entity);
 
-            return await Task.FromResult(await GetCustomerById(entity.CustId));
+            return await Task.FromResult(await GetCustomerById(entity.CustomerNr));
         }
 
         public async Task<CustomerDto> UpdateCustomer(CustomerDto entity)
@@ -69,16 +69,16 @@ namespace TwentyTwoSeven.Data.DataContext
             if (_customers == null)
                 throw new Exception("Customer List Empty");
 
-            var foundCust = await GetCustomerById(entity.CustId);
+            var foundCust = await GetCustomerById(entity.CustomerNr);
 
             if (foundCust == null)
-                throw new ArgumentNullException(nameof(entity.CustId), "Customer not found");
+                throw new ArgumentNullException(nameof(entity.CustomerNr), "Customer not found");
 
             foundCust.Accounts.Clear();
             foundCust.Accounts = entity.Accounts;
             foundCust.Name = entity.Name;
 
-            return await Task.FromResult(await GetCustomerById(entity.CustId)); 
+            return await Task.FromResult(await GetCustomerById(entity.CustomerNr)); 
         }
 
         public async Task<bool> DeleteCustomer(CustomerDto entity)
@@ -86,12 +86,12 @@ namespace TwentyTwoSeven.Data.DataContext
             if (_customers == null)
                 throw new ArgumentException("Customer List empty");
 
-            if(_customers.Any(x=>x.CustId.Equals(entity.CustId)))
+            if(_customers.Any(x=>x.CustomerNr.Equals(entity.CustomerNr)))
             {
                 _customers.Remove(entity);
             }
 
-            return await Task.FromResult(_customers.Any(x=>x.CustId.Equals(entity.CustId)));
+            return await Task.FromResult(_customers.Any(x=>x.CustomerNr.Equals(entity.CustomerNr)));
         }
 
         #endregion

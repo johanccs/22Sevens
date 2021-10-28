@@ -15,7 +15,7 @@ namespace TwentyTwoSeven.Data.Dto
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string CustId { get; set; }
+        public string CustomerNr { get; set; }
         public IList<AccountDto> Accounts { get; set; }
     }
 }

@@ -44,7 +44,7 @@ namespace TwentyTwoSeven.Api.Controllers
                     return NotFound($"Customer with Id {request.Id} not found");
                 }
 
-                _logger.LogInfo($"{result.CustId} found");
+                _logger.LogInfo($"{result.CustomerNr} found");
                 return Ok(result);
             }
             catch (Exception ex)
@@ -159,11 +159,11 @@ namespace TwentyTwoSeven.Api.Controllers
         private async Task<int>GetCreatedCustomerId(CustomerRequest.V1.Add request)
         {
             var returnQuery = await _repoWrapper.Customer
-                               .FindByConditionAsync(x => x.CustId.Equals(request.CustId));
+                               .FindByConditionAsync(x => x.CustomerNr.Equals(request.CustId));
 
             var cust = returnQuery.Select(x => x.Id).ToList();
 
-            if (cust == null || cust.Count == 0)
+            if (cust == null || cust.Count() == 0)
                 throw new ArgumentException("Create customer procedure failed", nameof(cust));
 
             return cust[0];

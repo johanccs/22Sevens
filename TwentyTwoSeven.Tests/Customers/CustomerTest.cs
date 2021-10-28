@@ -31,17 +31,17 @@ namespace TwentyTwoSeven.Tests
 
         public async Task Setup()
         {
-            var cust = new CustomerDto() { CustId = "jp0123", Name = "J. Potgieter" };
+            var cust = new CustomerDto() { CustomerNr = "jp0123", Name = "J. Potgieter" };
 
             await _customerContext.CreateAsync(cust);
 
-            cust = new CustomerDto() { CustId = "cm001", Name = "J. Smith" };
+            cust = new CustomerDto() { CustomerNr = "cm001", Name = "J. Smith" };
         }
 
         [Fact]
         public async Task AddCustomerToMockDatabase_DbNotEmpty()
         {
-            var cust = new CustomerDto() { CustId = "jp0123", Name = "J. Potgieter" };
+            var cust = new CustomerDto() { CustomerNr = "jp0123", Name = "J. Potgieter" };
 
             await _customerContext.CreateAsync(cust);
 
@@ -54,14 +54,14 @@ namespace TwentyTwoSeven.Tests
         [Fact]
         public async Task AddCustomerToMockDatabase_ValidId()
         {
-            var cust = new CustomerDto() { CustId = "jp0123", Name = "J. Potgieter" };
+            var cust = new CustomerDto() { CustomerNr = "jp0123", Name = "J. Potgieter" };
 
             await _customerContext.CreateAsync(cust);
 
             var customers = await _customerContext.FindAllAsync();
-            var customer = customers.ToList().FirstOrDefault(x => x.CustId.Equals(cust.CustId));
+            var customer = customers.ToList().FirstOrDefault(x => x.CustomerNr.Equals(cust.CustomerNr));
 
-            Assert.True(!string.IsNullOrEmpty(customer.CustId));
+            Assert.True(!string.IsNullOrEmpty(customer.CustomerNr));
         }
 
         [Fact]
@@ -69,10 +69,10 @@ namespace TwentyTwoSeven.Tests
         {
             await Setup();
             await _customerContext.DeleteAsync(
-                new CustomerDto { CustId = "jp0123", Name = "J. Potgieter" });
+                new CustomerDto { CustomerNr = "jp0123", Name = "J. Potgieter" });
 
             var customers = await _customerContext.FindAllAsync();
-            var customer = customers.ToList().FirstOrDefault(x => x.CustId.Equals("jp0123"));
+            var customer = customers.ToList().FirstOrDefault(x => x.CustomerNr.Equals("jp0123"));
 
             Assert.True(customer == null);
         }

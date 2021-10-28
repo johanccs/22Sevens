@@ -61,10 +61,10 @@ namespace TwentyTwoSeven.Common.Models
                 if (!ValidateTransferAmount())
                     throw new Exception("Transfer amount should be more than R0.00");
 
-                if (!ValidateAccounts(SourceAccount))
+                if (ValidateAccount(SourceAccount))
                     throw new Exception("Please provide a valid source account");
 
-                if (!ValidateAccounts(DestinationAccount))
+                if (ValidateAccount(DestinationAccount))
                     throw new Exception("Please provide a valid destination account");
 
                 if (!ValidateSufficientFunds())
@@ -123,9 +123,11 @@ namespace TwentyTwoSeven.Common.Models
             return _transferAmount > 0;
         }
 
-        private bool ValidateAccounts(AccountDto acc)
+        private bool ValidateAccount(AccountDto acc)
         {
-            return acc != null;
+            var result = string.IsNullOrEmpty(acc.AccNumber);
+
+            return result; 
         }
 
         private bool ValidateSufficientFunds()

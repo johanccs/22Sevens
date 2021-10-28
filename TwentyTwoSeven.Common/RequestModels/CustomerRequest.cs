@@ -23,8 +23,7 @@ namespace TwentyTwoSeven.Common.RequestModels
 
                     var returnVal = new CustomerDto
                     {
-                        Name = entity.Name,
-                        CustId = entity.CustId
+                        Name = entity.Name
                     };
 
                     return returnVal;
